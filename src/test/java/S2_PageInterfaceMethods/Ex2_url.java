@@ -1,0 +1,24 @@
+package S2_PageInterfaceMethods;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
+
+public class Ex2_url
+{
+    public static void main(String[] args) throws InterruptedException {
+        Playwright pw = Playwright.create();
+        Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        Page page = browser.newPage();
+
+       page.navigate("https://www.google.com");
+       String currentUrl=page.url();
+       System.out.println("Current URL: " + currentUrl);
+
+        Thread.sleep(5000);
+
+        browser.close();
+        pw.close();
+
+    }
+}
